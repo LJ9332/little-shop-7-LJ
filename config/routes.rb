@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   resources :merchants, only: [] do
-    resources :coupons, module: "merchant", only: [:index, :new, :show, :create]
+    resources :coupons, module: "merchant", except: [:destroy]
     resources :dashboard, module: "merchant", only: [:index]
     resources :items, module: "merchant", except: [:destroy]
     resources :invoices, module: "merchant", only: [:index, :show]

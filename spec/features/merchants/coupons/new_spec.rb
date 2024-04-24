@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Merchant Coupon new" do
+RSpec.describe "Merchant Coupon New" do
   before(:each) do
     @merchant1 = create(:merchant)
     @coupon1 = create(:coupon, merchant_id: @merchant1.id)

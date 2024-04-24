@@ -4,7 +4,7 @@ FactoryBot.define do
     special_code { Faker::Company.unique.name }
     amount_off { Faker::Number.number(digits: 5) }
     percent_off { false }
-    status { "Active" }
+    status { "active" }
     association :merchant
   end
 end
