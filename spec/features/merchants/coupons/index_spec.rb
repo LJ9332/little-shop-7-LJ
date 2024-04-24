@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "Merchant Coupon Index" do
   before(:each) do
     @merchant1 = create(:merchant)
-    @coupon1 = create(:coupon, merchant_id: @merchant1.id)
+    @coupon1 = create(:coupon, percent_off: true, merchant_id: @merchant1.id)
     @coupon2 = create(:coupon, merchant_id: @merchant1.id)
     @coupon3 = create(:coupon, status: "inactive", merchant_id: @merchant1.id)
-    @coupon4 = create(:coupon, status: "inactive", merchant_id: @merchant1.id)
+    @coupon4 = create(:coupon, percent_off: true, status: "inactive", merchant_id: @merchant1.id)
   end
 
   describe 'CC User Story 1' do

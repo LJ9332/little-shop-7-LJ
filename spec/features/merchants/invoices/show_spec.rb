@@ -22,8 +22,11 @@ RSpec.describe "Merchant Invoices Show" do
     @customer4 = @customers[3]
     @customer5 = create(:customer) 
 
-    @invoice1 = create(:invoice, customer: @customer1, created_at: Time.utc(2004, 9, 13, 12, 0, 0))
-    @invoice2 = create(:invoice, customer: @customer5, created_at: Time.utc(2006, 1, 12, 1, 0, 0))
+    @coupon1 = create(:coupon, merchant_id: @merchant1.id)
+    @coupon2 = create(:coupon)
+
+    @invoice1 = create(:invoice, customer: @customer1, coupon_id: @coupon1.id, created_at: Time.utc(2004, 9, 13, 12, 0, 0))
+    @invoice2 = create(:invoice, customer: @customer5, coupon_id: @coupon2.id, created_at: Time.utc(2006, 1, 12, 1, 0, 0))
 
     @invoice_item1 = create(:invoice_item, item_id: @item1.id, invoice_id: @invoice1.id, status: 0)
     @invoice_item2 = create(:invoice_item, item_id: @item2.id, invoice_id: @invoice1.id, status: 0)
@@ -110,4 +113,17 @@ RSpec.describe "Merchant Invoices Show" do
       end
     end
   end
+
+  # describe 'CC User Story 7' do
+  #   it "displays a subtotal and grand total for invoice" do
+  #     expect(page).to have_content("Subtotal: ")
+  #     expect(page).to have_content("Grand Total: ")
+  #   end
+
+  #   it "can link to coupon show page" do
+  #     expect(page).to have_link("#{@coupon1.name}")
+  #     click_on "#{@coupon1.name}"
+  #     expect(current_path).to eq(merchant_coupon_path(@merchant1, @coupon1))
+  #   end
+  # end
 end

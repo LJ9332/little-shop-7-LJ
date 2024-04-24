@@ -6,5 +6,7 @@ class Merchant::InvoicesController < ApplicationController
 
   def show
     @invoice = Invoice.find(params[:id])
+    # @subtotal = @invoice.total_revenue_in_dollars
+    # @grand_total = @invoice.grand_total
   end
 end

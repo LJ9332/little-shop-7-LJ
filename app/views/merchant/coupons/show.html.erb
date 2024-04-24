@@ -3,6 +3,7 @@
 <p>Amount Off: <%= @coupon.amount_off %></p>
 <p>Status: <%= @coupon.status %></p>
 
+
 <% if @coupon.status == "active" %>
   <%= button_to "Deactivate #{@coupon.name}", 
     merchant_coupon_path(@merchant, @coupon), 

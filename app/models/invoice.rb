@@ -41,4 +41,10 @@ class Invoice < ApplicationRecord
     formatted_dollars = cents / 100.00
     formatted_dollars
   end
+
+  # def grand_total
+  #   subtotal = total_revenue_in_dollars
+  #   subtotal -= coupon.amount_off
+  #   subtotal
+  # end
 end
