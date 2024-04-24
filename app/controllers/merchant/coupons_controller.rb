@@ -24,6 +24,19 @@ class Merchant::CouponsController < ApplicationController
     end
   end
 
+  def update
+    @merchant = Merchant.find(params[:merchant_id])
+    coupon = Coupon.find(params[:id])
+    if params[:status]
+      coupon.update(status: params[:status])
+      redirect_to merchant_coupon_path(@merchant, coupon)
+    else
+      coupon.update!(status: params[:status])
+      redirect_to merchant_coupon_path(@merchant, coupon)
+      flash[:notice] = "Coupon has pending invoices"
+    end
+  end
+
   private
 
   def coupon_params

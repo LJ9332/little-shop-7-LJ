@@ -1,0 +1,20 @@
+<h1><%= @coupon.name %></h1>
+<p>Special Code: <%= @coupon.special_code %></p>
+<p>Amount Off: <%= @coupon.amount_off %></p>
+<p>Status: <%= @coupon.status %></p>
+
+<% if @coupon.status == "active" %>
+  <%= button_to "Deactivate #{@coupon.name}", 
+    merchant_coupon_path(@merchant, @coupon), 
+    method: :patch, 
+    params: {status: "inactive"} 
+  %> </br>
+<% else %>
+  <%= button_to "Activate #{@coupon.name}", 
+    merchant_coupon_path(@merchant, @coupon), 
+    method: :patch, 
+    params: {status: "active"} 
+  %> </br>
+<% end %>
+
+
