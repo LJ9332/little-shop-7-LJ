@@ -1,9 +1,26 @@
 <h1><%= @merchant.name %> Coupons</h1>
 
 <h3><%= link_to 'Create a Coupon', new_merchant_coupon_path(@merchant) %></h3>
-<ul>
-  <% @coupons.each do |coupon|%>
-    <li><%= link_to "#{coupon.name}", merchant_coupon_path(@merchant, coupon) %> 
-    Amount Off: <%= number_to_currency(coupon.amount_off, unit: "$") %></li>
-  <% end %>
-</ul>
+<section class="active-coupons" >
+<h2>Active Coupons:</h2>
+  <ul>
+    <% @coupons.each do |coupon|%>
+      <% if coupon.status == "active" %>
+        <li><%= link_to "#{coupon.name}", merchant_coupon_path(@merchant, coupon) %> 
+        Amount Off: <%= number_to_currency(coupon.amount_off, unit: "$") %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
+
+<section class="inactive-coupons" >
+<h2>Inactive Coupons:</h2>
+  <ul>
+    <% @coupons.each do |coupon|%>
+      <% if coupon.status == "inactive" %>
+        <li><%= link_to "#{coupon.name}", merchant_coupon_path(@merchant, coupon) %> 
+        Amount Off: <%= number_to_currency(coupon.amount_off, unit: "$") %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</section>
