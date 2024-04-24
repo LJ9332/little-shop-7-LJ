@@ -15,11 +15,11 @@ class Merchant::CouponsController < ApplicationController
 
   def create
     @merchant = Merchant.find(params[:merchant_id])
-    @coupon = Coupon.new(coupon_params)
-    if @coupon.save
+    coupon = Coupon.new(coupon_params)
+    if coupon.save
       redirect_to merchant_coupons_path(@merchant)
     else
-      redirect_to new_merchant_coupon(@merchant)
+      redirect_to new_merchant_coupon_path(@merchant)
       flash[:notice] = "Error: Please fill in all fields"
     end
   end
@@ -27,6 +27,6 @@ class Merchant::CouponsController < ApplicationController
   private
 
   def coupon_params
-    params.permit(:id, :name, :special_code, :percent_off, :status, :merchant_id)
+    params.permit(:id, :name, :special_code, :amount_off, :percent_off, :status, :merchant_id)
   end
 end
